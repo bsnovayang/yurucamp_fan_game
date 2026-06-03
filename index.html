@@ -58,10 +58,30 @@
         <div class="panel">
           <div class="panel-header">
             <h2>背包</h2>
-            <span class="tag blue" id="loadTag">0 / 10</span>
+            <span class="tag blue" id="loadTag">負重 0 / 10</span>
           </div>
           <div class="content">
             <div class="inventory" id="inventory"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h2>Build</h2>
+            <span class="tag yellow" id="buildProgress">0</span>
+          </div>
+          <div class="content">
+            <div class="builds" id="builds"></div>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-header">
+            <h2>路線進度</h2>
+            <span class="tag" id="routeTag">觀察中</span>
+          </div>
+          <div class="content">
+            <div class="route-progress" id="routeProgress"></div>
           </div>
         </div>
 
@@ -92,6 +112,7 @@
   <script src="data/items.js"></script>
   <script src="data/week1.js"></script>
   <script src="data/week2.js"></script>
+  <script src="data/combos.js"></script>
   <script src="js/state.js"></script>
   <script src="js/shop.js"></script>
   <script src="js/actions.js"></script>

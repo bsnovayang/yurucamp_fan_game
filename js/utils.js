@@ -1,5 +1,5 @@
-function item(id, name, price, weight, tags, desc, effects) {
-  return { id, name, price, weight, tags, desc, effects };
+function item(id, name, price, weight, tags, desc, effects, type = "gear") {
+  return { id, name, price, weight, tags, desc, effects, type };
 }
 
 function check(id, label, sourceText, sourceCharacter, requiredTags) {

@@ -67,7 +67,7 @@
         return;
       }
       if (totalLoad() + it.weight > state.loadMax) {
-        state.log.unshift(`背包太重，放不下「${it.name}」。`);
+        state.log.unshift(`背包容量不足，放不下「${it.name}」。目前負重 ${totalLoad()} / ${state.loadMax}，該物品負重 ${it.weight}。`);
         render();
         return;
       }
@@ -76,6 +76,23 @@
       applyItemEffects(it);
       state.log.unshift(`買下「${it.name}」，放進背包。`);
       updateChecklistStatus(true);
+      render();
+    }
+
+
+    function sellItem(index) {
+      if (isCampingScene()) {
+        state.log.unshift("露營當天不能整理出售背包，等回到平日再處理。");
+        render();
+        return;
+      }
+      const it = state.bag[index];
+      if (!it) return;
+      const refund = resaleValue(it);
+      state.bag.splice(index, 1);
+      state.budget += refund;
+      updateChecklistStatus(true);
+      state.log.unshift(`賣出「${it.name}」，回收 ${refund} 圓，背包負重下降。`);
       render();
     }
 

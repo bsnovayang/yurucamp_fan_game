@@ -98,12 +98,18 @@
 
     function startWeek2() {
       const result = campResults();
+      const consumed = consumeCampItems();
       state.week = 2;
       state.week2Main = result.main;
       state.day = 0;
       state.mode = "week2";
       state.finished = false;
+      state.checklist = [];
+      state.campResult = null;
       state.log.unshift(`第二週開始：${state.characters[result.main].name} 的事件傾向提高。`);
+      if (consumed.length) {
+        state.log.unshift("上一週 checklist 已歸檔，第二週會根據新的 LINE 提示重新建立目標。");
+      }
       render();
     }
 
@@ -133,5 +139,13 @@
     function chooseWeek2Camp(index) {
       state.week2CampChoice = index;
       state.week2CampResult = null;
+      render();
+    }
+
+
+    function goToWeek2Diary() {
+      week2CampResults();
+      state.mode = "week2Diary";
+      state.finished = true;
       render();
     }
